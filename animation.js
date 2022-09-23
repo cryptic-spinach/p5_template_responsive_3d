@@ -2,8 +2,13 @@ let graphics;
 let rotation = 0;
 
 function setup() {
-  createCanvas(windowHeight*1.77, windowHeight);
-
+  if (windowWidth/windowHeight > 1.77) {
+    createCanvas(windowHeight*1.77, windowHeight);
+  }
+  else {
+    createCanvas(windowWidth, windowWidth/1.77);
+  }
+  
   graphics = createGraphics(width, height, WEBGL);
 }
 
@@ -24,5 +29,10 @@ function draw() {
 }
 
 function windowResized() {
-  resizeCanvas(windowHeight*1.77, windowHeight);
+  if (windowWidth/windowHeight > 1.77) {
+    resizeCanvas(windowHeight*1.77, windowHeight);
+  }
+  else {
+    resizeCanvas(windowWidth, windowWidth/1.77);
+  }
 }
